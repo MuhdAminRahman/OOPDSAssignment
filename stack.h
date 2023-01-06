@@ -1,8 +1,8 @@
-
+#ifndef stack.h
+#define stack.h
 
 
 #include <iostream>
-// Header File including all string functions
 #include <string>
  
 using namespace std;
@@ -129,43 +129,4 @@ template <class T> T Stack<T>::topElement()
     return top_element;
 }
  
-// Method 12
-// Main driver method
-int main()
-{
- 
-    // Creating object of Stack class in main() method
-    // Declaring objects of type Integer and String
-    Stack<int> integer_stack;
-    Stack<string> string_stack;
- 
-    // Adding elements to integer stack object
-    // Custom integer entries
-    integer_stack.push(2);
-    integer_stack.push(54);
-    integer_stack.push(255);
- 
-    // Adding elements to string stack
-    // Custom string entries
-    string_stack.push("Welcome");
-    string_stack.push("to");
-    string_stack.push("GeeksforGeeks");
- 
-    // Now, removing element from integer stack
-    cout << integer_stack.pop() << " is removed from stack"
-         << endl;
- 
-    // Removing top element from string stack
-    cout << string_stack.pop() << " is removed from stack "
-         << endl;
- 
-    // Print and display the top element in integer stack
-    cout << "Top element is " << integer_stack.topElement()
-         << endl;
- 
-    // Print and display the top element in string stack
-    cout << "Top element is " << string_stack.topElement()
-         << endl;
- 
-    return 0;
-}
+#endif
