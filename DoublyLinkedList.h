@@ -3,6 +3,7 @@
 
 #include <iostream>
 using namespace std;
+
 template <typename T>
 class DoublyLinkedList
 {
@@ -22,26 +23,26 @@ public:
     DoublyLinkedList();
     ~DoublyLinkedList();
 
-    void AddF(T data);
-    void DelF();
-    void AddE(T data);
-    void DelE();
-    void AddA(T data, T target);
-    void PtrStart();
-    void PtrEnd();
-    T getNode();
-    void nextNode();
-    void prevNode();
-    bool isHead();
-    bool isEnd();
-    void Print();
+    void AddF(T data); //add element to the front of the list
+    void DelF(); //delete element from the front of the list
+    void AddE(T data); //add element to the back of the list
+    void DelE(); //delete element from the back of the list
+    void AddA(T data, T target); //add element after a node(target) in the list
+    void PtrStart(); //points to the head of the list
+    void PtrEnd(); //points to the tail of the list
+    T getNode(); //returns the data of the node pointed by a pointer
+    void nextNode(); //moves the pointer to the next node
+    void prevNode(); //moves the pointer to the previous node
+    bool isHead(); //returns true if pointer is at the head of the list
+    bool isEnd(); //returns true if pointer is at the tail of the list
+    void Print(); //prints the list
 };
 
 template <typename T>
-DoublyLinkedList<T>::DoublyLinkedList() : head(nullptr), tail(nullptr), pointer(nullptr) {}
+DoublyLinkedList<T>::DoublyLinkedList() : head(nullptr), tail(nullptr), pointer(nullptr) {} // default constructer
 
 template <typename T>
-DoublyLinkedList<T>::~DoublyLinkedList()
+DoublyLinkedList<T>::~DoublyLinkedList() //destructor
 {
     while (head != nullptr)
     {
