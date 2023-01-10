@@ -64,7 +64,7 @@ void DoublyLinkedList<T>::AddF(T data)
         head->prev = new_node;
     }
     head = new_node; // the new node replaces the head and also if the list is empty the new node is the head
-    if (tail == nullptr)// if the list is empty the new node is also the tail
+    if (tail == nullptr)// if the list was empty the new node is also the tail
     {
         tail = new_node;
     }
@@ -131,7 +131,7 @@ template <typename T>
 void DoublyLinkedList<T>::AddA(T data, T target)
 {
     Node *current = head;
-    while (current != nullptr && current->data != target)
+    while (current != nullptr && current->data != target) // 
     {
         current = current->next;
     }
