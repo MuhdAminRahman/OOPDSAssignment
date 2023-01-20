@@ -22,7 +22,12 @@ class Queue {
   bool isEmpty();
 
  };
-  Queue(size_t capacity) : capacity(capacity) {
+//   Queue(size_t capacity) : capacity(capacity) {
+//     size = 0;
+//   }
+
+  Queue(size_t capacity) {
+    this->capacity=capacity;
     size = 0;
   }
 
