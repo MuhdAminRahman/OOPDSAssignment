@@ -4,142 +4,170 @@
 #include <cstring>
 #include <sstream>
 #include <cstdlib>
+#include <algorithm>
+#include <memory>
 
-using namespace std;
+#include "DoublyLinkedList.cpp"
+#include "Queue.cpp"
+#include "Stack.cpp"
+// #include operation & var
+int main()
+{
 
-vector<string> program {
-                        "Var int x", 
-                        "Var int y", 
-                        "= x 2",
-                        "+ x 1",
-                        "= y 9", 
-                        "+ y x", 
-                        "- y 4",
-                        "+ y 20",
-                        "- y x",
-                        "* y 3",
-                        "print y"
-};
+    // DoublyLinkedList<int> list;
+    // Stack<int> list2;
+    // Queue<int> list3();
 
-struct Value{
-    string type;
-    string value;
-};
+    string name = "test";
+    map<string, DataStructure<int> *> DSint;
+    DSint[name] = new SinglyLinkedList<int>();
+    DSint[name]->AddF(5);
+    DSint[name]->AddF(3);
+    DSint[name]->AddF(2);
+    DSint[name]->AddA(3, 6);
+    DSint[name]->print();
 
+    DSint[name]->PtrStart();
+    DSint[name]->nextNode();
+    // SLL test
 
-int main(){
-    map<string, Value> prg;
+    // DataStructure<int> *test = new SinglyLinkedList<int>();
 
-// read the program line by line
-for (auto command : program){
-    string first;
-    string type, name;
-    string value;
+    //  test->AddF(5);
+    //  test->AddF(4);
+    //  test->DelF();
+    //  test->print();
 
-    stringstream ss(command);
-    ss >> first;
-    for_each(first.begin(), first.end(), [](char &ch){ch = tolower(ch);});
-    
-    if (first == "var"){
-        ss >> type;
-        ss >> name;
+    // test->AddE(1);
+    // test->AddE(2);
+    // test->print();
 
-        Value v = {type, value};
-       
-        if (type == "int")
-          value = "0";
-        else
-            if (value == "string")
-                value = "";
+    // test->DelE();
+    // test->print();
 
-        prg[name].type = type;
-        prg[name].value = value;
+    // test->AddA(6, 5);
+    // test->print();
+
+    // test->PtrStart();
+    // while (!test->isEnd())
+    // {
+    //     cout << test->getNode() << " ";
+    //     test->nextNode();
+    // }
+    // cout << endl;
+
+    // test->PtrEnd();
+    // while (!test->isHead())
+    // {
+    //     cout << test->getNode() << " ";
+    //     test->prevNode();
+    // }
+    // cout << endl;
+
+    // Queue test
+    /*DataStructureSandQ<int> *test = new Queue<int>(5);
+    test->push(5);
+    test->push(3);
+    test->push(2);
+    test->push(1);
+    test->push(6);
+
+    test->print();
+
+    test->pop();
+    test->print();
+
+    cout << "bool test: ";
+    bool c = test->isEmpty();
+    cout << c << endl;
+    bool d = test->isFull();
+    cout << d << endl;
+
+    cout << "element test: ";
+    int a = test->first();
+    cout << a << endl;
+    int b = test->last();
+    cout << b << endl;*/
+
+    // Stack test
+    //  DataStructureSandQ<int>* test = new Stack<int> ();
+    //  test->push(5);
+    //  test->push(3);
+    //  test->push(2);
+    //  test->push(1);
+    //  test->push(6);
+    //  test->push(7);
+
+    // test->print();
+    // test->pop();
+    // test->print();
+
+    // cout<<  "bool test: ";
+    // bool c = test->isEmpty();
+    // cout << c << endl;
+    // bool d = test->isFull();
+    // cout << d << endl;
+
+    // cout<<  "element test: ";
+    // int a = test->first();
+    // cout << a << endl;
+    // int b = test->last();
+    // cout << b << endl;
+
+    // DLL test
+    // DataStructure<int>* test = new DoublyLinkedList<int> ();
+    //  test->AddF(5);
+    //  test->AddF(4);
+    //  test->DelF();
+    //  test->print();
+
+    // test->AddE(1);
+    // test->AddE(2);
+    // test->print();
+
+    // test->DelE();
+    // test->print();
+
+    // test->AddA(6, 5);
+    // test->print();
+
+    // test->PtrStart();
+    // while (!test->isEnd())
+    // {
+    //     cout << test->getNode() << " ";
+    //     test->nextNode();
+    // }
+    // cout << endl;
+
+    // test->PtrEnd();
+    // while (!test->isHead())
+    // {
+    //     cout<< test->getNode() << " ";
+    //     test->prevNode();
+    // }
+    // cout << endl;
+}
+
+void insert(T data)
+{
+    root = insertHelper(root, data);
+}
+
+Node<T> *insertHelper(Node<T> *r, T data)
+{
+    if (r == nullptr)
+    {
+        return new Node<T>(data);
     }
-    else
-    if (first == "="){
-        string name, value;
-        ss >> name;
-        ss >> value;
-        prg[name].value = value;
+
+    if (data < r->data)
+    {
+        r->left = insertHelper(r->left, data);
     }
-    else
-    if (first == "+"){
-        string name;
-        string value;
-        ss >> name;
-        ss >> value;
-
-        if (isdigit(value[0])){
-            int old = stoi(prg[name].value); 
-            old += stoi(value);
-            prg[name].value = to_string(old);
-        }
-        else
-        { 
-            // + y x
-            string valueoffirst = prg[name].value;
-            string valueofsecond = prg[value].value;
-
-            int old1 = stoi(valueoffirst); 
-            int old2 = stoi(valueofsecond);
-            old1 += old2;
-            prg[name].value = to_string(old1);
-        }
+    else if (data > r->data)
+    {
+        r->right = insertHelper(r->right, data);
     }
-    else
-    if (first == "print"){
-        string var;
-        ss >> var;
-        cout << prg[var].value << endl;
-    }
-    else
-    if (first == "-"){
-        string name;
-        string value;
-        ss >> name;
-        ss >> value;
 
-        if (isdigit(value[0])){
-            int old = stoi(prg[name].value); 
-            old -= stoi(value);
-            prg[name].value = to_string(old);
-        }
-        else
-        { 
-            // + y x
-            string valueoffirst = prg[name].value;
-            string valueofsecond = prg[value].value;
-
-            int old1 = stoi(valueoffirst); 
-            int old2 = stoi(valueofsecond);
-            old1 -= old2;
-            prg[name].value = to_string(old1);
-        }
-    }
-    else
-    if (first == "*"){
-        string name;
-        string value;
-        ss >> name;
-        ss >> value;
-
-        if (isdigit(value[0])){
-            int old = stoi(prg[name].value); 
-            old *= stoi(value);
-            prg[name].value = to_string(old);
-        }
-        else
-        { 
-            // + y x
-            string valueoffirst = prg[name].value;
-            string valueofsecond = prg[value].value;
-
-            int old1 = stoi(valueoffirst); 
-            int old2 = stoi(valueofsecond);
-            old1 *= old2;
-            prg[name].value = to_string(old1);
-        }
-    }
-    
-    
+    return r;
 }
