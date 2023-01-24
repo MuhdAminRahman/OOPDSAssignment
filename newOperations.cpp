@@ -29,6 +29,7 @@ struct Value
 {
     string type;
     string value;
+    bool isTrue;
 };
 
 class Program
@@ -100,11 +101,11 @@ public:
             }
             else if (type == "float")
             {
-                value = "";
+                value = "0.000";
             }
             else if (type == "double")
             {
-                value = "";
+                value = "0.00";
             }
             else if (type == "pointer")
             {
@@ -112,7 +113,7 @@ public:
             }
             else if (type == "bool")
             {
-                value = "";
+                value = "true";
             }
             prg[name].type = type;
             prg[name].value = value;
@@ -188,6 +189,19 @@ public:
     {
         string name, value;
         ss >> name;
+        if (first == "if")
+        {
+            string boolname;
+            ss >> boolname;
+            if (prg[name].value == "False")
+            {
+                cout << "not yet.\n";
+            }
+            else
+            {
+                return;
+            }
+        }
         ss >> value;
         if (first == "=")
         {
@@ -299,7 +313,7 @@ public:
 
     void stackAndQueueFunctions(stringstream &ss, const string &first)
     {
-        string name, value;
+        string name, value, boolname;
         ss >> name;
         if (first == "push")
         {
@@ -313,15 +327,38 @@ public:
         }
         else if (first == "isfull")
         {
+            ss >> boolname;
+            bool boolvar = DSSQint[name]->isFull();
+            if (boolvar == true)
+            {
+                prg[boolname].value = "True";
+                cout << "The DS is full.\n";
+            }
+            else
+            {
+                prg[boolname].value = "False";
+                cout << "False, DS is not full.\n";
+            }
         }
         else if (first == "isempty")
         {
+            ss >> boolname;
+            bool boolvar = DSSQint[name]->isEmpty();
+            if (boolvar == true)
+            {
+                prg[boolname].value = "True";
+                cout << "The DS is empty.\n";
+            }
+             else
+            {
+                prg[boolname].value = "False";
+                cout << "False, DS is not empty.\n";
+            }
         }
         else if (first == "top" || first == "front")
         {
             string intname;
             ss >> intname;
-            // int testvalue = DSSQint[name]->first();
             auto s = to_string(DSSQint[name]->first());
             prg[intname].value = s;
             cout << "x = " << prg[intname].value << endl;
@@ -330,7 +367,6 @@ public:
         {
             string intname;
             ss >> intname;
-            // int testvalue = DSSQint[name]->first();
             auto s = to_string(DSSQint[name]->last());
             prg[intname].value = s;
             cout << "x = " << prg[intname].value << endl;
@@ -339,12 +375,12 @@ public:
 
     void llFunctions(stringstream &ss, const string &first)
     {
-        string name, value;
+        string name, value, ptrname;
         ss >> name;
-        ss >> value;
 
         if (first == "addf")
         {
+            ss >> value;
             int addvalue = stoi(value);
             if (DSint.find(name) != DSint.end())
                 DSint[name]->AddF(addvalue);
@@ -353,6 +389,7 @@ public:
         }
         else if (first == "adde")
         {
+            ss >> value;
             int addvalue = stoi(value);
             if (DSint.find(name) != DSint.end())
                 DSint[name]->AddE(addvalue);
@@ -361,6 +398,7 @@ public:
         }
         else if (first == "adda")
         {
+            ss >> value;
             string newvalue;
             ss >> newvalue;
             int addnewvalue = stoi(newvalue);
@@ -384,13 +422,23 @@ public:
             else
                 cout << "Key not found" << endl;
         }
-        /*else if (first == "ptrstart")
+        else if (first == "ptrstart")
         {
+            ss >> ptrname;
+            int ptr;
+            string ptrstr;
             if (DSint.find(name) != DSint.end())
-                ptr = DSint[name]->PtrStart();
+            {
+                DSint[name]->PtrStart();
+                ptr = DSint[name]->getNode();
+                ptrstr = to_string(ptr);
+                prg[ptrname].value = ptrstr;
+            }
             else
+            {
                 cout << "Key not found" << endl;
-        }*/
+            }
+        }
         /*else if (first == "ptrend")
         {
             string name;
@@ -402,61 +450,111 @@ public:
             else
                 cout << "Key not found" << endl;
         }*/
-        /*else if (first == "getnode")
+        else if (first == "getnode")
         {
-            string name, value;
-            ss >> name;
-            ss >> value;
-            int addvalue = stoi(value);
+            string ptrname, varname;
+            ss >> varname;
+            ss >> ptrname;
+            int ptr;
+            string ptrstr;
             if (DSint.find(name) != DSint.end())
-                DSint[name]->AddE(addvalue);
+            {
+                ptr = DSint[name]->getNode();
+                ptrstr = to_string(ptr);
+                prg[ptrname].value = ptrstr;
+                prg[varname].value = ptrstr;
+            }
             else
+            {
                 cout << "Key not found" << endl;
+            }
         }
         else if (first == "nextnode")
         {
-            string name, value;
-            ss >> name;
-            ss >> value;
-            int addvalue = stoi(value);
+            string ptrname;
+            ss >> ptrname;
+            int ptr;
+            string ptrstr;
             if (DSint.find(name) != DSint.end())
-                DSint[name]->AddE(addvalue);
+            {
+                DSint[name]->nextNode();
+                ptr = DSint[name]->getNode();
+                ptrstr = to_string(ptr);
+                prg[ptrname].value = ptrstr;
+            }
             else
+            {
                 cout << "Key not found" << endl;
+            }
         }
         else if (first == "prevnode")
         {
-            string name, value;
-            ss >> name;
-            ss >> value;
-            int addvalue = stoi(value);
+            string ptrname;
+            ss >> ptrname;
+            int ptr;
+            string ptrstr;
             if (DSint.find(name) != DSint.end())
-                DSint[name]->AddE(addvalue);
+            {
+                DSint[name]->prevNode();
+                ptr = DSint[name]->getNode();
+                ptrstr = to_string(ptr);
+                prg[ptrname].value = ptrstr;
+            }
             else
+            {
                 cout << "Key not found" << endl;
+            }
         }
         else if (first == "ishead")
         {
-            string name, value;
-            ss >> name;
-            ss >> value;
-            int addvalue = stoi(value);
+            string ptrname, boolname;
+            ss >> ptrname;
+            ss >> boolname;
+
             if (DSint.find(name) != DSint.end())
-                DSint[name]->AddE(addvalue);
+            {
+                bool isHeadVar = DSint[name]->isHead();
+                if (isHeadVar == true)
+                {
+                    prg[boolname].value = "True";
+                    cout << "At head.\n";
+                }
+                else
+                {
+                    prg[boolname].value = "False";
+                    cout << "False,not at head.\n";
+                }
+            }
             else
+            {
                 cout << "Key not found" << endl;
+            }
         }
         else if (first == "isend")
         {
-            string name, value;
-            ss >> name;
-            ss >> value;
-            int addvalue = stoi(value);
+            string ptrname, boolname;
+            ss >> ptrname;
+            ss >> boolname;
+
             if (DSint.find(name) != DSint.end())
-                DSint[name]->AddE(addvalue);
+            {
+                bool isEndVar = DSint[name]->isEnd();
+                if (isEndVar == true)
+                {
+                    prg[boolname].value = "True";
+                    cout << "At tail.\n";
+                }
+                else
+                {
+                    prg[boolname].value = "False";
+                    cout << "False,not at tail.\n";
+                }
+            }
             else
+            {
                 cout << "Key not found" << endl;
-        }*/
+            }
+        }
     }
 
     void bstFunctions(stringstream &ss, const string &first)
@@ -501,7 +599,6 @@ public:
 
     void handleGeneralFunctions(stringstream &ss, const string &first)
     {
-        
 
         if (first == "print")
         {
@@ -535,7 +632,7 @@ public:
         {
             string name;
             ss >> name;
-            cloneDataStructure(ss,name);
+            cloneDataStructure(ss, name);
         }
 
         else if (first == "addf" || first == "delf" || first == "adde" || first == "dele" || first == "adda" || first == "ptrstart" || first == "ptrend" || first == "getnode" || first == "nextnode" || first == "prevnode" || first == "ishead" || first == "isend")
@@ -817,7 +914,7 @@ public:
             cout << "Invalid Data Type for Data Structure" << endl;
             break;
         }
-    return false;
+        return false;
     }
 
     void sortDataStructure(const string &dsname)
@@ -862,9 +959,7 @@ public:
         ss >> newname;
         if (DSint.find(dsname) != DSint.end())
         {
-            DataStructure<int>* newDS= new DoublyLinkedList<int>();
-            newDS = DSint[dsname];
-            DSint[newname] = newDS;
+            DSint[newname] = DSint[dsname];
         }
         else if (DSstring.find(dsname) != DSstring.end())
         {
@@ -894,7 +989,6 @@ public:
         {
             DSSQdouble[newname] = DSSQdouble[dsname];
         }
-
     }
 
     int operations()
