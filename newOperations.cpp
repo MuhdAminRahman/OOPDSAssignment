@@ -823,26 +823,22 @@ public:
             DSdouble[name]->Delete();
             DSdouble.erase(name);
         }
-        /*else if (DSSQint.count(name) == 1)
+        else if (DSSQint.count(name) == 1)
         {
-            DSSQint[name]->delete();
             DSSQint.erase(name);
         }
         else if (DSSQstring.count(name) == 1)
         {
-            DSSQstring[name]->delete();
             DSSQstring.erase(name);
         }
         else if (DSSQfloat.count(name) == 1)
         {
-            DSSQfloat[name]->delete();
             DSSQfloat.erase(name);
         }
         else if (DSSQdouble.count(name) == 1)
         {
-            DSSQdouble[name]->delete();
             DSSQdouble.erase(name);
-        }*/
+        }
     }
 
     bool searchDataStructure(stringstream &ss)
