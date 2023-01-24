@@ -439,17 +439,23 @@ public:
                 cout << "Key not found" << endl;
             }
         }
-        /*else if (first == "ptrend")
+        else if (first == "ptrend")
         {
-            string name;
-            DataStructure<int> *ptr;
-            ss >> name;
-            ss >> value;
+            ss >> ptrname;
+            int ptr;
+            string ptrstr;
             if (DSint.find(name) != DSint.end())
-                ptr = DSint[name]->PtrEnd();
+            {
+                DSint[name]->PtrEnd();
+                ptr = DSint[name]->getNode();
+                ptrstr = to_string(ptr);
+                prg[ptrname].value = ptrstr;
+            }
             else
+            {
                 cout << "Key not found" << endl;
-        }*/
+            }
+        }
         else if (first == "getnode")
         {
             string ptrname, varname;
