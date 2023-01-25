@@ -78,45 +78,57 @@ T Stack<T>::first()
 template <class T>
 T Stack<T>::last()
 {
+    // create a variable to store the bottom element
     T bottom_element;
+    // assign the bottom element to the first element in the stack array
     bottom_element = st[0];
+    // return the bottom element
     return bottom_element;
 }
 template <typename T>
 bool Stack<T>::search(T k)
 {
-    if (isEmpty())
+    if (isEmpty())// check if the stack is empty
     {
         cout << "The stack is empty" << endl;
     }
     else
     {
+        // iterate through the stack from top to bottom
         for (int i = top; i >= 0; i--)
         {
+            // check if the current element matches the search element
             if (st[i] == element)
             {
+                // return the index if found
                 return i;
             }
         }
     }
+    // return -1 if not found
     return -1;
 }
 
 template <typename T>
 void Stack<T>::sort()
 {
+    // check if the stack is empty
     if (isEmpty())
     {
         cout << "The stack is empty" << endl;
     }
     else
     {
+        // outer loop for iterating through the stack
         for (int i = 0; i < top; i++)
         {
+            // inner loop for comparing elements
             for (int j = i + 1; j <= top; j++)
             {
+                // check if the current element is greater than the next element
                 if (st[i] > st[j])
                 {
+                    // swap the elements if true
                     T temp = st[i];
                     st[i] = st[j];
                     st[j] = temp;
@@ -128,6 +140,7 @@ void Stack<T>::sort()
 template <class T>
 void Stack<T>::print()
 {
+    // check if the stack is empty
     if (isEmpty())
     {
         cout << "The stack is empty" << endl;
@@ -135,8 +148,10 @@ void Stack<T>::print()
     else
     {
         cout << "Elements of the stack:" << endl;
+        // iterate through the stack from top to bottom
         for (int i = top; i >= 0; i--)
         {
+            // print the element
             cout << st[i] << endl;
         }
     }
