@@ -91,6 +91,8 @@ template <typename T>
 void BinarySearchTree<T>::inorder(){
     cout << "\nInorder traversal:" << endl;
     rec_inorder(root);
+    cout << "\b " << endl;
+    cout << endl;
 }
 
 template <typename T>
@@ -105,6 +107,8 @@ template <typename T>
 void BinarySearchTree<T>::postorder(){
     cout << "\nPostorder traversal:" << endl;
     rec_postorder(root);
+    cout << "\b " << endl;
+    cout << endl;
 }
 
 template <typename T>
@@ -119,6 +123,8 @@ template <typename T>
 void BinarySearchTree<T>::preorder(){
     cout << "\nPreorder traversal:" << endl;
     rec_preorder(root);
+    cout << "\b " << endl;
+    cout << endl;
 }
 
 
