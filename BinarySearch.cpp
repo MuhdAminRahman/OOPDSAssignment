@@ -1,25 +1,34 @@
 #include "BinarySearch.h"
 
+// constructor to initialize the root node to null
 template <typename T>
 BinarySearchTree<T>::BinarySearchTree(){
+    // Initialize the root of the tree to null
     root = nullptr;
 }
 
+// constructor to initialize the root node to a given node
 template <typename T>
 BinarySearchTree<T>::BinarySearchTree(Node<T>* r){
+    // Initialize the root of the tree with the given node
     root = r;
 }
 
+// destructor to delete the tree
 template <typename T>
 BinarySearchTree<T>::~BinarySearchTree(){
+    //Delete the entire tree
     deleteTree(root);
 }
 
+// getter method for root
 template <typename T>
 Node<T>* BinarySearchTree<T>::getRoot() {
-        return root;
+    //return the root of the tree
+    return root;
 }
 
+// prints the path of the root of a target node
 template <typename T>
 void BinarySearchTree<T>::Rootpath(Node<T>* r, int target, vector<int>& path){
     if (!r) return;
@@ -37,17 +46,20 @@ void BinarySearchTree<T>::Rootpath(Node<T>* r, int target, vector<int>& path){
     path.pop_back();
 }
 
+// helper function to call Rootpath
 template <typename T>
 void BinarySearchTree<T>::Root(T target){
     vector<int> path;
     Rootpath(getRoot(), target, path);
 }
 
+// setter method for root
 template <typename T>
 void BinarySearchTree<T>::setRoot(Node<T>* r) {
     root = r;
 }
 
+// deletes the tree starting from the given node
 template <typename T>
 void BinarySearchTree<T>::deleteTree(Node<T>* r){
     if (r == nullptr) return;
@@ -56,13 +68,13 @@ void BinarySearchTree<T>::deleteTree(Node<T>* r){
     delete r;
 }
 
-
+// inserts a new node with the given data
 template <typename T>
 void BinarySearchTree<T>::insert(T data){
     root = insertHelper(root, data);
 }
 
-
+// helper function to insert a new node
 template <typename T>
 Node<T>* BinarySearchTree<T>::insertHelper(Node<T>* r, T data) {
         if (r == nullptr) {
@@ -79,6 +91,7 @@ Node<T>* BinarySearchTree<T>::insertHelper(Node<T>* r, T data) {
     }
 
 
+//traverse the tree in in-order 
 template <typename T>
 void BinarySearchTree<T>::rec_inorder(Node<T>* ptr){
     if (ptr == nullptr) return;
@@ -87,6 +100,7 @@ void BinarySearchTree<T>::rec_inorder(Node<T>* ptr){
     rec_inorder(ptr->right);
 }
 
+//function to calls rec_inorder and print the tree in-order
 template <typename T>
 void BinarySearchTree<T>::inorder(){
     cout << "\nInorder traversal:" << endl;
@@ -95,6 +109,7 @@ void BinarySearchTree<T>::inorder(){
     cout << endl;
 }
 
+//traverse the tree in post-order
 template <typename T>
 void BinarySearchTree<T>::rec_postorder(Node<T>* ptr){
     if (ptr == nullptr) return;
@@ -103,6 +118,7 @@ void BinarySearchTree<T>::rec_postorder(Node<T>* ptr){
     cout << ptr->data << ":";
 }
 
+//function to calls rec_inorder and print the tree post-order
 template <typename T>
 void BinarySearchTree<T>::postorder(){
     cout << "\nPostorder traversal:" << endl;
@@ -111,6 +127,7 @@ void BinarySearchTree<T>::postorder(){
     cout << endl;
 }
 
+//traverse the tree in pre-order
 template <typename T>
 void BinarySearchTree<T>::rec_preorder(Node<T>* ptr){
     if (ptr == nullptr) return;
@@ -119,6 +136,7 @@ void BinarySearchTree<T>::rec_preorder(Node<T>* ptr){
     rec_preorder(ptr->right);
 }
 
+//function to calls rec_inorder and print the tree pre-order
 template <typename T>
 void BinarySearchTree<T>::preorder(){
     cout << "\nPreorder traversal:" << endl;
@@ -127,12 +145,13 @@ void BinarySearchTree<T>::preorder(){
     cout << endl;
 }
 
-
+// Delete a node with the given data
 template <typename T>
 void BinarySearchTree<T>::Delete(T key){
     root = deleteNodeHelper(root, key);
 }
 
+// helper function to delete a node
 template <typename T>
 Node<T>* BinarySearchTree<T>::deleteNodeHelper(Node<T>* r, T key){
     if (r == nullptr) return r;
@@ -167,6 +186,7 @@ Node<T>* BinarySearchTree<T>::deleteNodeHelper(Node<T>* r, T key){
         return r;
 }
 
+//finds the node with the minimum value in the subtree rooted at that node.
 template <typename T>
 Node<T>* BinarySearchTree<T>::minValueNode(Node<T>* r) {
     Node<T>* current = r;
