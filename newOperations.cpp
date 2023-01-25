@@ -458,21 +458,16 @@ public:
         }
         else if (first == "getnode")
         {
-            string ptrname, varname;
-            ss >> varname;
+            string ptrname;
             ss >> ptrname;
-            int ptr;
-            string ptrstr;
-            if (DSint.find(name) != DSint.end())
+            
+            if(prg.find(name) != prg.end())
             {
-                ptr = DSint[name]->getNode();
-                ptrstr = to_string(ptr);
-                prg[ptrname].value = ptrstr;
-                prg[varname].value = ptrstr;
+                prg[name].value = prg[ptrname].value;
             }
             else
             {
-                cout << "Key not found" << endl;
+                cout << "Key not found.\n";
             }
         }
         else if (first == "nextnode")
