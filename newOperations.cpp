@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <memory>
 
+// This include statement brings in the implementation of the different data 
 #include "DoublyLinkedList.cpp"
 #include "Queue.cpp"
 #include "Stack.cpp"
@@ -15,6 +16,7 @@
 
 using namespace std;
 
+// Enum for different data types that a variable can hold
 enum DataType
 {
     INT,
@@ -25,6 +27,7 @@ enum DataType
     NULLDT
 };
 
+// Struct for holding a value, its type, and a boolean indicating if it's true or false
 struct Value
 {
     string type;
@@ -32,21 +35,27 @@ struct Value
     bool isTrue;
 };
 
+
 class Program
 {
+    // Vector for holding the program
     vector<string> program;
+    // Map for holding variables and their values
     map<string, Value> prg;
 
+    // Maps for holding different data structures of different data types
     map<string, DataStructure<int> *> DSint;
     map<string, DataStructure<string> *> DSstring;
     map<string, DataStructure<double> *> DSdouble;
     map<string, DataStructure<float> *> DSfloat;
 
+    // Maps for holding different data structures of different data types for stack and queue
     map<string, DataStructureSandQ<int> *> DSSQint;
     map<string, DataStructureSandQ<string> *> DSSQstring;
     map<string, DataStructureSandQ<double> *> DSSQdouble;
     map<string, DataStructureSandQ<float> *> DSSQfloat;
 
+    // Map for holding binary search tree of int data type
     map<string, DataStructureBST<int> *> DSBSTint;
 
 public:
@@ -63,6 +72,7 @@ public:
         }
     }
 
+    // function for variables
     void handleVariableDeclaration(stringstream &ss)
     {
         string type, dstype, name, value;
@@ -120,6 +130,7 @@ public:
         }
     }
 
+    //function to check name
     bool checkNameVar(string const &name)
     {
         if (prg.count(name) == 1)
@@ -132,6 +143,7 @@ public:
         }
     }
 
+    //fuction to print
     void printFunction(stringstream &ss)
     {
         string name;
@@ -185,6 +197,7 @@ public:
         }
     }
 
+    // fuction for variables and operations
     void variableOperations(stringstream &ss, const string &first)
     {
         string name, value;
@@ -313,6 +326,7 @@ public:
         }
     }
 
+    //function for stack and queues
     void stackAndQueueFunctions(stringstream &ss, const string &first)
     {
         string name, value, boolname;
@@ -375,6 +389,7 @@ public:
         }
     }
 
+    //fuctions for single and double linked lists
     void llFunctions(stringstream &ss, const string &first)
     {
         string name, value, ptrname;
@@ -560,6 +575,7 @@ public:
         }
     }
 
+    //fuction for binary search tree
     void bstFunctions(stringstream &ss, const string &first)
     {
         string name;
@@ -600,6 +616,7 @@ public:
         }
     }
 
+    // fuction for general 
     void handleGeneralFunctions(stringstream &ss, const string &first)
     {
 
@@ -762,6 +779,7 @@ public:
         }
     }
 
+    //data types function
     DataType parseDataType(const string &type)
     {
         if (type == "int")
@@ -792,6 +810,7 @@ public:
         }
     }
 
+    //funtion to delete datastructures
     void deleteDS(const string &name)
     {
         string checkname = name;
@@ -842,6 +861,7 @@ public:
         }
     }
 
+    //function to search the data structure
     bool searchDataStructure(stringstream &ss)
     {
         string dsname;
@@ -856,6 +876,7 @@ public:
         return isVarInDS;
     }
 
+    // function to search the data structure functions
     bool searchDSFunctions(const string &dsname, DataType dataType, const string &varname)
     {
         int varint;
@@ -920,6 +941,7 @@ public:
         return false;
     }
 
+    //fuction to sort the data structures
     void sortDataStructure(const string &dsname)
     {
         if (DSint.find(dsname) != DSint.end())
@@ -956,6 +978,7 @@ public:
         }
     }
 
+    // function to clone the data structure
     void cloneDataStructure(stringstream &ss, const string &dsname)
     {
         string newname;
@@ -994,6 +1017,7 @@ public:
         }
     }
 
+    // operation fuctions
     int operations()
     {
         for (const auto &command : program)
@@ -1015,6 +1039,7 @@ public:
     }
 };
 
+//main program
 int main()
 {
     Program p;
