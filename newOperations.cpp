@@ -224,7 +224,6 @@ public:
             }
             else
             {
-                // + y x
                 string valueoffirst = prg[name].value;
                 string valueofsecond = prg[value].value;
 
@@ -245,7 +244,6 @@ public:
             }
             else
             {
-                // + y x
                 string valueoffirst = prg[name].value;
                 string valueofsecond = prg[value].value;
 
@@ -266,7 +264,6 @@ public:
             }
             else
             {
-                // + y x
                 string valueoffirst = prg[name].value;
                 string valueofsecond = prg[value].value;
 
@@ -286,7 +283,6 @@ public:
             }
             else
             {
-                // + y x
                 string valueoffirst = prg[name].value;
                 string valueofsecond = prg[value].value;
 
@@ -306,7 +302,6 @@ public:
             }
             else
             {
-                // + y x
                 string valueoffirst = prg[name].value;
                 string valueofsecond = prg[value].value;
 
