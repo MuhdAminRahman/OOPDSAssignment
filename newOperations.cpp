@@ -198,14 +198,21 @@ public:
                 cout << "not yet.\n";
             }
             else
-            {
+            {   
+                cout << "True.\n";
                 return;
             }
         }
         ss >> value;
         if (first == "=")
-        {
-            prg[name].value = value;
+        {   
+            if (isdigit(value[0])){
+                prg[name].value = value;
+            }
+            else{
+                prg[name].value = prg[value].value;
+            }
+            
         }
         else if (first == "+")
         {
@@ -570,7 +577,7 @@ public:
             int addvalue = stoi(value);
             DSBSTint[name]->insert(addvalue);
         }
-        else if (first == "delete")
+        else if (first == "deletenode")
         {
             string value;
             ss >> value;
@@ -579,10 +586,10 @@ public:
         }
         else if (first == "root")
         {
-            string varname;
-            ss >> varname;
-            int rootvalue = stoi(prg[varname].value);
-            DSBSTint[name]->Root(rootvalue);
+            string value;
+            ss >> value;
+            int addvalue = stoi(value);
+            DSBSTint[name]->Root(addvalue);
         }
         else if (first == "inorder")
         {
@@ -644,7 +651,7 @@ public:
         {
             stackAndQueueFunctions(ss, first);
         }
-        else if (first == "insert" || first == "delete" || first == "root" || first == "inorder" || first == "postorder" || first == "preorder")
+        else if (first == "insert" || first == "deletenode" || first == "root" || first == "inorder" || first == "postorder" || first == "preorder")
         {
             bstFunctions(ss, first);
         }
@@ -833,6 +840,10 @@ public:
         else if (DSSQdouble.count(name) == 1)
         {
             DSSQdouble.erase(name);
+        }
+        else if (DSBSTint.count(name) == 1)
+        {
+            DSBSTint.erase(name);
         }
     }
 
