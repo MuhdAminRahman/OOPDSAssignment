@@ -1062,8 +1062,6 @@ public:
         while (getline(ifile, line_str))
         {
             stringstream ss(line_str);
-            string word;
-            ss >> word;
             program.push_back(line_str);
         }
         ifile.close();
