@@ -1,0 +1,14 @@
+var queue int st
+isempty st
+push st 5
+push st 3
+push st 2
+push st 10
+push st 20
+isempty st
+isfull st
+front st
+back st
+print st
+pop st
+print st
