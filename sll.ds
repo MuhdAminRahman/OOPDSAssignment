@@ -1,0 +1,30 @@
+var sll int test
+addf test 5
+addf test 3
+addf test 2
+print test
+delf test
+print test
+adde test 7
+print test
+dele test
+print test
+adda test 2 6
+print test
+var int x
+var pointer ptr
+ptrstart test ptr
+getnode x ptr
+print x
+ptrstart test ptr
+print ptr
+var bool ddd
+ishead test ptr ddd
+ptrend test ptr
+print ptr
+var bool ddd
+isend test ptr ddd
+nextnode test
+ptr print ptr
+prevnode test ptr
+print ptr
