@@ -1,0 +1,13 @@
+var bst b
+insert b 10
+insert b 20
+insert b 30
+insert b 12
+insert b 7
+insert b 9
+insert b 2
+deletenode b 30
+inorder b
+preorder b
+postorder b
+root b 12
