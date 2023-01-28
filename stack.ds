@@ -1,0 +1,22 @@
+Var int x 
+= x 5
+* x 2
+print x
+Var int y  
+= y 17
+- y x
+print y
+var stack int st
+isempty st
+push st 5
+push st 3
+push st 2
+push st 10
+push st 20
+isempty st
+isfull st
+top st
+bottom st
+print st
+pop st
+print st
