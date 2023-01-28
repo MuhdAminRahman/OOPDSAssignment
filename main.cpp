@@ -1033,12 +1033,13 @@ public:
                 ss >> fname;
                 string truename = fname;
                 vector<string> file = import(truename);
+                cout << "contents of the file: \n";
                 for (auto s : file)
                 {
-                    cout << "contents of the file: \n";
                     cout << s << endl;
-                    cout << "End of contents.\n";
                 }
+                cout << "End of contents.\n\n";
+                cout << "Running Operations:\n";
                 operations(file);
 
             }
