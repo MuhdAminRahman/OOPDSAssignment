@@ -9,7 +9,7 @@ adde test 7
 print test
 dele test
 print test
-adda test 2 6
+adda test 3 6
 print test
 var int x
 var pointer ptr
@@ -19,12 +19,13 @@ print x
 ptrstart test ptr
 print ptr
 var bool ddd
-ishead test ptr ddd
 ptrend test ptr
 print ptr
-var bool ddd
 isend test ptr ddd
-nextnode test
-ptr print ptr
+ishead test ptr ddd
+ptrstart test ptr
+print ptr
+nextnode test ptr
+print ptr
 prevnode test ptr
 print ptr
